@@ -1,6 +1,6 @@
 # TODO: alpine, slim and "regular" images. Different python versions?
 # VERSION=$(sed -nr "/^\[metadata\]/ { :l /^version[ ]*=/ { s/[^=]*=[ ]*//; p; q;}; n; b l;}" ./setup.cfg)
-name: release
+name: Publish to Docker Hub
 
 on:
     release:
@@ -11,7 +11,8 @@ jobs:
     publish:
         runs-on: ubuntu-latest
         steps:
-            #-   uses: actions/checkout@v3
+            -   uses: actions/checkout@v3
+
             -   name: Set up QEMU
                 uses: docker/setup-qemu-action@v2
 
