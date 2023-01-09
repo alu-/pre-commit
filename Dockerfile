@@ -8,9 +8,9 @@ ADD . /pre-commit-src/
 
 RUN cd /pre-commit-src && \
     python setup.py install && \
-    rm -rf /pre-commit-src && \
     mkdir /src && \
-    git config --global --add safe.directory '/src'
+    git config --global --add safe.directory '/src' && \
+    rm -rf /pre-commit-src
 
 WORKDIR /src
 
