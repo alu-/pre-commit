@@ -26,7 +26,7 @@ jobs:
 
             -   name: Store information in environment
                 run: |
-                    VERSION=$(echo $GITHUB_REF | sed -e 's#refs/.+/##')
+                    VERSION=$(echo $GITHUB_REF | sed -e 's#refs/.*/##')
                     echo "version=$VERSION" >> $GITHUB_ENV
 
             -   name: Debug environment
