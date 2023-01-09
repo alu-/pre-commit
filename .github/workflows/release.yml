@@ -39,4 +39,4 @@ jobs:
                     push: true
                     tags: |
                         alu87/pre-commit:latest
-                        alu87/pre-commit:"${{ env.version }}"
+                        alu87/pre-commit:${{ env.version }}
