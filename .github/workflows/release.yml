@@ -31,6 +31,7 @@ jobs:
             -   name: Generate Dockerfile
                 run: |
                     echo "test"
+                    printenv
 
             -   name: Build and push
                 uses: docker/build-push-action@v3
