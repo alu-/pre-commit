@@ -1,3 +1,4 @@
+# TODO: alpine, slim and "regular" images. Different python versions?
 name: release
 
 on:
@@ -21,10 +22,19 @@ jobs:
                     username: ${{ secrets.DOCKERHUB_USERNAME }}
                     password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+            -   name: Store information in environment
+                run: |
+                    VERSION=$(sed -nr "/^\[metadata\]/ { :l /^version[ ]*=/ { s/[^=]*=[ ]*//; p; q;}; n; b l;}" ./setup.cfg)
+                    echo "version={$VERSION}" >> $GITHUB_ENV
+
+            -   name: Generate Dockerfile
+                run: |
+                    echo "test"
+
             -   name: Build and push
                 uses: docker/build-push-action@v3
                 with:
                     push: true
                     tags: |
                         alu87/pre-commit:latest
-                        alu87/pre-commit:testing-2.2
+                        alu87/pre-commit:"${{ env.version }}"
